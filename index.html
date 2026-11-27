@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#17102b"><title>SilverChat — Connect beautifully</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#100b1d;--panel:#19122a;--panel2:#211936;--line:#332747;--text:#f6f1ff;--muted:#a99dbb;--violet:#a78bfa;--violet2:#7855d9;--gold:#e8c77a;--green:#5ed6a0;--danger:#ff718c;--shadow:0 24px 70px #05030b88}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 10% -10%,#54318b55,transparent 65%),radial-gradient(700px 500px at 100% 100%,#30205b66,transparent 60%),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.shell{max-width:1500px;margin:auto;min-height:100vh;padding:22px;display:flex;align-items:center;justify-content:center}.app{width:100%;height:min(900px,calc(100vh - 44px));min-height:620px;display:grid;grid-template-columns:330px 1fr;background:#151021dd;border:1px solid #ffffff14;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(20px)}
+.sidebar{background:linear-gradient(180deg,#211735,#171122);border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}.brand{padding:24px 22px 18px;display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:15px;background:linear-gradient(140deg,#d7c2ff,#7952d4 70%);display:grid;place-items:center;color:#211334;font:700 22px 'Space Grotesk';box-shadow:0 8px 25px #8b65dd55}.brand h1{font:700 21px 'Space Grotesk';margin:0;letter-spacing:-.6px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.6px;text-transform:uppercase;margin-top:2px}
+.me{margin:0 16px 18px;padding:12px;background:#ffffff08;border:1px solid #ffffff0c;border-radius:17px;display:flex;align-items:center;gap:11px}.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#c4a8ff,#7252c9);display:grid;place-items:center;color:#211334;font-weight:700;flex:none;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.me-info{min-width:0;flex:1}.me-info b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.me-info small{color:var(--green);font-size:12px}.iconbtn{border:1px solid #ffffff14;background:#ffffff08;color:var(--muted);width:36px;height:36px;border-radius:12px}.section-label{padding:4px 21px 10px;color:#887c9b;font-size:10px;letter-spacing:1.8px;font-weight:700;text-transform:uppercase}.search{margin:0 16px 15px;position:relative}.search input{width:100%;background:#0f0a19;border:1px solid var(--line);border-radius:13px;padding:12px 14px 12px 38px;color:var(--text);outline:none}.search span{position:absolute;left:13px;top:10px;color:var(--muted)}.tabs{display:flex;gap:7px;padding:0 16px 12px}.tab{flex:1;border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px;border-radius:11px;font-size:12px}.tab.active{background:#8e6add22;border-color:#8e6add66;color:#d9c7ff}.people{overflow:auto;padding:0 10px 12px;flex:1}.person{width:100%;display:flex;gap:11px;align-items:center;padding:11px;border:0;background:transparent;color:var(--text);border-radius:15px;text-align:left}.person:hover,.person.selected{background:#ffffff0c}.person .details{flex:1;min-width:0}.person b{display:block;font-size:13px}.person small{display:block;color:var(--muted);font-size:11px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.status-dot{width:8px;height:8px;background:var(--green);border-radius:50%;margin-left:auto;box-shadow:0 0 10px #5ed6a0aa}
+.sidebar-foot{padding:14px 18px;border-top:1px solid var(--line);color:#81758f;font-size:11px;display:flex;justify-content:space-between}
+.main{display:flex;flex-direction:column;min-width:0;background:linear-gradient(145deg,#171125,#110d1c)}.topbar{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 25px;gap:13px}.topbar .title{flex:1;min-width:0}.topbar h2{font:600 17px 'Space Grotesk';margin:0}.topbar small{color:var(--muted);font-size:11px}.top-actions{display:flex;gap:8px}.welcome{flex:1;display:grid;place-items:center;text-align:center;padding:30px}.welcome-card{max-width:480px}.orb{width:110px;height:110px;margin:0 auto 24px;border-radius:34px;display:grid;place-items:center;font-size:46px;background:linear-gradient(145deg,#c6a8ff,#7753d4);box-shadow:0 20px 60px #875bd955;transform:rotate(-7deg)}.welcome h2{font:700 30px 'Space Grotesk';margin:0 0 10px}.welcome p{color:var(--muted);line-height:1.7;margin:0}.chat-area{flex:1;overflow:auto;padding:24px clamp(14px,5vw,70px);display:flex;flex-direction:column;gap:13px}.day{text-align:center;color:#9386a4;font-size:11px;margin:4px 0 8px}.bubble-row{display:flex;align-items:flex-end;gap:9px;max-width:78%}.bubble-row.mine{align-self:flex-end;flex-direction:row-reverse}.bubble{padding:12px 15px;border:1px solid #ffffff12;background:#251c36;border-radius:17px 17px 17px 5px;line-height:1.5;font-size:13px;overflow-wrap:anywhere;box-shadow:0 5px 18px #0002}.mine .bubble{background:linear-gradient(135deg,#8864d6,#6746b4);border-color:#c2a8ff35;border-radius:17px 17px 5px 17px}.bubble img{max-width:min(320px,100%);border-radius:11px;display:block;margin-bottom:5px}.bubble time{display:block;text-align:right;font-size:9px;color:#d8c9efaa;margin-top:5px}.composer{padding:16px 22px 20px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px}.compose-box{flex:1;display:flex;align-items:center;background:#211932;border:1px solid #3c2d53;border-radius:16px;padding:0 14px}.compose-box input{width:100%;background:transparent;border:0;outline:0;color:var(--text);padding:15px 8px;font-size:13px}.send{width:48px;height:48px;border:0;border-radius:15px;color:#211334;background:linear-gradient(140deg,#d6c0ff,#9973e9);font-size:18px;box-shadow:0 8px 24px #8059d955}.attach{width:43px;height:43px;border-radius:14px;border:1px solid var(--line);background:#ffffff08;color:#c7b4e9;font-size:18px}.notice{margin:14px 20px;padding:12px 14px;border-radius:13px;background:#dcbf7420;border:1px solid #dcbf7444;color:#f0dca8;font-size:12px;line-height:1.5}.auth-wrap{width:min(440px,100%);padding:34px;background:#1b142b;border:1px solid #ffffff18;border-radius:26px;box-shadow:var(--shadow)}.auth-wrap .brand{padding:0 0 25px}.auth-wrap h2{font:700 26px 'Space Grotesk';margin:0 0 7px}.auth-wrap p{color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 22px}.field{margin:13px 0}.field label{display:block;color:#b8acc8;font-size:11px;margin-bottom:7px}.field input{width:100%;padding:13px 14px;border-radius:12px;background:#100b1c;border:1px solid var(--line);color:var(--text);outline:none}.field input:focus,.search input:focus{border-color:#a78bfa}.primary{width:100%;padding:14px;border:0;border-radius:13px;background:linear-gradient(120deg,#c4a5ff,#8660dc);color:#211334;font-weight:700;margin-top:10px}.switch{color:#cbb8f3;text-align:center;font-size:12px;margin-top:18px;cursor:pointer}.error{color:#ff9bac;font-size:12px;min-height:18px;margin-top:10px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);padding:12px 17px;background:#2c2140;border:1px solid #ffffff22;border-radius:13px;box-shadow:var(--shadow);font-size:12px;z-index:20}
+@media(max-width:760px){.shell{padding:0}.app{height:100dvh;min-height:0;border-radius:0;border:0;grid-template-columns:1fr}.sidebar{display:none}.main{height:100dvh}.topbar{padding:0 15px;height:68px}.chat-area{padding:18px 14px}.bubble-row{max-width:90%}.composer{padding:12px 10px calc(12px + env(safe-area-inset-bottom))}.welcome h2{font-size:25px}.mobile-back{display:inline-block!important}.app.show-list .sidebar{display:flex;position:absolute;inset:0;z-index:5}.app.show-list .main{display:none}}
+.mobile-back{display:none}
+
+.message-tools{display:flex;gap:6px;justify-content:flex-end;margin-top:7px;opacity:.72}
+.message-tools button{border:1px solid #ffffff20;background:#ffffff0b;color:#e8dcff;border-radius:9px;padding:4px 8px;font-size:10px}
+.reaction-line{font-size:11px;margin-top:5px;color:#f3d98f}.typing{padding:0 25px 8px;color:#bca8e5;font-size:11px;min-height:18px}
+.profile-edit{border:1px solid var(--line);background:#ffffff08;color:#d8c7f5;border-radius:10px;padding:6px 9px;font-size:11px}
+@media(hover:hover){.message-tools{opacity:0}.bubble:hover .message-tools{opacity:1}}
+
+</head>
+<body>
+<div class="shell">
+<div id="auth" class="auth-wrap">
+ <div class="brand"><div class="logo">S</div><div><h1>SilverChat</h1><small>Private • Simple • Connected</small></div></div>
+ <h2 id="authTitle">Welcome back</h2><p id="authSub">Sign in to continue your conversations.</p>
+ <div id="nameField" class="field hidden"><label>DISPLAY NAME</label><input id="displayName" placeholder="Your name" maxlength="32"></div>
+ <div class="field"><label>EMAIL ADDRESS</label><input id="email" type="email" placeholder="you@example.com" autocomplete="email"></div>
+ <div class="field"><label>PASSWORD</label><input id="password" type="password" placeholder="At least 6 characters" autocomplete="current-password"></div>
+ <button id="authBtn" class="primary">Sign in securely</button><div id="authError" class="error"></div>
+ <div id="switchAuth" class="switch">New to SilverChat? Create account</div>
+ <div class="notice">Your messages are stored in your Firebase project. Only use this app with people who agree to communicate with you.</div>
+</div>
+<div id="app" class="app hidden">
+ <aside class="sidebar">
+  <div class="brand"><div class="logo">S</div><div><h1>SilverChat</h1><small>YOUR PRIVATE SPACE</small></div></div>
+  <div class="me"><div class="avatar" id="myAvatar">S</div><div class="me-info"><b id="myName">User</b><small>● Connected</small></div><button class="profile-edit" id="editProfile" title="Edit profile">Edit</button><button class="iconbtn" id="logout" title="Sign out">↗</button></div>
+  <div class="section-label">MESSAGES</div>
+  <div class="search"><span>⌕</span><input id="userSearch" placeholder="Find people..."></div>
+  <div class="tabs"><button class="tab active" id="allTab">People</button><button class="tab" id="recentTab">Recent</button></div>
+  <div id="people" class="people"></div>
+  <div class="sidebar-foot"><span>SilverChat Preview</span><span>v2.0</span></div>
+ </aside>
+ <main class="main">
+  <header class="topbar"><button class="iconbtn mobile-back" id="backBtn">‹</button><div class="avatar hidden" id="chatAvatar">S</div><div class="title"><h2 id="chatTitle">Your conversations</h2><small id="chatSubtitle">Choose someone to start chatting</small></div><div class="top-actions"><button class="iconbtn" id="refreshBtn" title="Refresh people">↻</button></div></header>
+  <section id="welcome" class="welcome"><div class="welcome-card"><div class="orb">✦</div><h2>Make every conversation count.</h2><p>Choose someone from your people list to begin. Your space is ready for meaningful conversations.</p></div></section>
+  <section id="chatArea" class="chat-area hidden"></section>
+  <div id="typingStatus" class="typing"></div><form id="composer" class="composer hidden"><input id="fileInput" type="file" accept="image/*" hidden><button type="button" class="attach" id="attachBtn" title="Attach image">＋</button><div class="compose-box"><input id="messageInput" maxlength="4000" placeholder="Write a message..." autocomplete="off"></div><button class="send" type="submit" aria-label="Send">➤</button></form>
+ </main>
+</div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script>
+// SilverChat Firebase configuration — replace only if using a different Firebase project.
+const firebaseConfig = {
+ apiKey: "REPLACE_WITH_YOUR_FIREBASE_WEB_API_KEY",
+ authDomain: "silve-rchat.firebaseapp.com",
+ databaseURL: "https://silve-rchat-default-rtdb.asia-southeast1.firebasedatabase.app",
+ projectId: "silve-rchat",
+ storageBucket: "silve-rchat.firebasestorage.app",
+ messagingSenderId: "322304576160",
+ appId: "1:322304576160:web:c9e971a5c4c494670357c5",
+ measurementId: "G-DDM9DTSJQB"
+};
+const $=id=>document.getElementById(id);
+let auth,db,storage,currentUser=null,users={},activeUid=null,messageRef=null,peopleMode="all",isRegister=false;
+const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(msg){const el=document.createElement('div');el.className='toast';el.textContent=msg;document.body.append(el);setTimeout(()=>el.remove(),2600)}
+function initials(name){return (name||'S').trim().split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
+function setAvatar(el,user){el.innerHTML=user?.photoURL?`<img src="${safe(user.photoURL)}">`:safe(initials(user?.name||user?.email||'S'))}
+function chatId(a,b){return [a,b].sort().join('_')}
+function showAuth(){ $('auth').classList.remove('hidden');$('app').classList.add('hidden')}
+function showApp(){ $('auth').classList.add('hidden');$('app').classList.remove('hidden')}
+function authMode(){isRegister=!isRegister;$('authTitle').textContent=isRegister?'Create your account':'Welcome back';$('authSub').textContent=isRegister?'Set up your SilverChat profile.':'Sign in to continue your conversations.';$('nameField').classList.toggle('hidden',!isRegister);$('authBtn').textContent=isRegister?'Create account':'Sign in securely';$('switchAuth').textContent=isRegister?'Already registered? Sign in':'New to SilverChat? Create account';$('authError').textContent=''}
+$('switchAuth').onclick=authMode;
+$('authBtn').onclick=async()=>{const email=$('email').value.trim(),password=$('password').value,name=$('displayName').value.trim();$('authError').textContent='';try{if(!email||!password)throw Error('Enter your email and password.');if(isRegister){if(name.length<2)throw Error('Enter a display name (at least 2 characters).');const cred=await auth.createUserWithEmailAndPassword(email,password);await db.ref('users/'+cred.user.uid).set({name,email:email.toLowerCase(),createdAt:firebase.database.ServerValue.TIMESTAMP});}else await auth.signInWithEmailAndPassword(email,password)}catch(e){$('authError').textContent=e.message.replace('Firebase: ','') }};
+$('logout').onclick=()=>auth.signOut();
+$('refreshBtn').onclick=loadUsers;
+$('backBtn').onclick=()=>{$('app').classList.add('show-list')};
+$('allTab').onclick=()=>{peopleMode='all';$('allTab').classList.add('active');$('recentTab').classList.remove('active');renderPeople()};
+$('recentTab').onclick=()=>{peopleMode='recent';$('recentTab').classList.add('active');$('allTab').classList.remove('active');renderPeople()};
+$('userSearch').oninput=renderPeople;
+function loadUsers(){if(!currentUser)return;db.ref('users').on('value',snap=>{users=snap.val()||{};renderPeople()})}
+function renderPeople(){const q=$('userSearch').value.toLowerCase();const list=Object.entries(users).filter(([uid,u])=>uid!==currentUser?.uid&&((u.name||'').toLowerCase().includes(q)||(u.email||'').toLowerCase().includes(q))).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));$('people').innerHTML=list.length?list.map(([uid,u])=>`<button class="person ${activeUid===uid?'selected':''}" data-uid="${safe(uid)}"><div class="avatar">${safe(initials(u.name||u.email))}</div><div class="details"><b>${safe(u.name||'SilverChat user')}</b><small>${safe(u.email||'')}</small></div><span class="status-dot"></span></button>`).join(''):'<div style="padding:18px;color:#a99dbb;font-size:12px;line-height:1.6">No people found yet. Ask a friend to create a SilverChat account.</div>';document.querySelectorAll('.person').forEach(b=>b.onclick=()=>openChat(b.dataset.uid))}
+function openChat(uid){activeUid=uid;watchTyping(uid);const cid=chatId(currentUser.uid,uid);db.ref('chats/'+cid+'/members').update({[currentUser.uid]:true,[uid]:true});const u=users[uid]||{};$('chatTitle').textContent=u.name||'SilverChat user';$('chatSubtitle').textContent=u.email||'SilverChat contact';$('chatAvatar').classList.remove('hidden');setAvatar($('chatAvatar'),u);$('welcome').classList.add('hidden');$('chatArea').classList.remove('hidden');$('composer').classList.remove('hidden');$('app').classList.remove('show-list');renderPeople();if(messageRef)messageRef.off();messageRef=db.ref('chats/'+chatId(currentUser.uid,uid)+'/messages');messageRef.limitToLast(100).on('value',snap=>{const msgs=snap.val()||{};$('chatArea').innerHTML=Object.entries(msgs).map(([id,m])=>{const mine=m.sender===currentUser.uid;return `<div class="bubble-row ${mine?'mine':''}"><div class="bubble" data-mid="${safe(id)}">${m.image?`<a href="${safe(m.image)}" target="_blank" rel="noopener"><img src="${safe(m.image)}" alt="Shared image"></a>`:''}${m.text?`<div>${safe(m.text).replace(/\n/g,'<br>')}</div>`:''}<time>${new Date(m.createdAt||Date.now()).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</time><div class="message-tools"><button data-action="react" data-mid="${safe(id)}">♡ React</button>${mine?`<button data-action="delete" data-mid="${safe(id)}">Delete</button>`:''}</div>${m.reactions?`<div class="reaction-line">${Object.values(m.reactions).map(safe).join(' ')}</div>`:''}</div></div>`}).join('')||'<div class="day">This is the beginning of your conversation ✨</div>';$('chatArea').scrollTop=$('chatArea').scrollHeight})}
+$('composer').onsubmit=async e=>{e.preventDefault();const text=$('messageInput').value.trim();if(!text||!activeUid)return;try{await sendMessage({text});$('messageInput').value=''}catch(err){toast(err.message)}};
+async function sendMessage(data){const ref=db.ref('chats/'+chatId(currentUser.uid,activeUid)+'/messages').push();await ref.set({...data,sender:currentUser.uid,createdAt:firebase.database.ServerValue.TIMESTAMP})}
+$('attachBtn').onclick=()=>$('fileInput').click();
+$('fileInput').onchange=async e=>{const file=e.target.files[0];if(!file||!activeUid)return;if(!file.type.startsWith('image/')){toast('Please choose an image file.');return}if(file.size>5*1024*1024){toast('Image must be smaller than 5 MB.');return}try{toast('Uploading image…');const path=`chat_uploads/${chatId(currentUser.uid,activeUid)}/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;const snap=await storage.ref(path).put(file);const url=await snap.ref.getDownloadURL();await sendMessage({image:url});toast('Image sent')}catch(err){toast('Upload failed: '+err.message)}finally{$('fileInput').value=''}};
+
+// Advanced interaction layer: profile editing, reactions, own-message deletion and typing status.
+$('editProfile').onclick=async()=>{
+ const snap=await db.ref('users/'+currentUser.uid).once('value');
+ const old=(snap.val()||{}).name||'';
+ const name=prompt('Choose your SilverChat display name:',old);
+ if(name===null)return;
+ if(name.trim().length<2||name.trim().length>32){toast('Name must be 2–32 characters.');return}
+ await db.ref('users/'+currentUser.uid+'/name').set(name.trim());
+ $('myName').textContent=name.trim();loadUsers();toast('Profile updated');
+};
+$('chatArea').addEventListener('click',async e=>{
+ const b=e.target.closest('button[data-action]');if(!b||!activeUid)return;
+ const mid=b.dataset.mid,action=b.dataset.action,cid=chatId(currentUser.uid,activeUid);
+ try{
+  if(action==='react'){
+   const ref=db.ref(`chats/${cid}/messages/${mid}/reactions/${currentUser.uid}`);
+   const snap=await ref.once('value');
+   if(snap.exists())await ref.remove();else await ref.set('💜');
+  }else if(action==='delete'){
+   if(!confirm('Delete this message for everyone in this chat?'))return;
+   const ref=db.ref(`chats/${cid}/messages/${mid}`);
+   const snap=await ref.once('value');
+   if(snap.val()?.sender!==currentUser.uid){toast('You can delete only your own messages.');return}
+   await ref.remove();
+  }
+ }catch(err){toast('Action failed: '+err.message)}
+});
+let typingTimer=null,typingStop=null;
+$('messageInput').addEventListener('input',()=>{
+ if(!activeUid)return;
+ const ref=db.ref(`chats/${chatId(currentUser.uid,activeUid)}/typing/${currentUser.uid}`);
+ ref.set(true);
+ clearTimeout(typingTimer);
+ typingTimer=setTimeout(()=>ref.remove(),1300);
+});
+function watchTyping(uid){
+ const ref=db.ref(`chats/${chatId(currentUser.uid,uid)}/typing`);
+ if(typingStop)typingStop();
+ const cb=snap=>{
+  const active=snap.val()||{};
+  const someone=Object.keys(active).some(k=>k!==currentUser.uid&&active[k]===true);
+  $('typingStatus').textContent=someone?'Typing…':'';
+ };
+ ref.on('value',cb);typingStop=()=>ref.off('value',cb);
+}
+
+function boot(){try{if(firebaseConfig.apiKey.startsWith('REPLACE_')){throw Error('Add your Firebase Web API key in index.html before using SilverChat.')}firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.database();storage=firebase.storage();auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);auth.onAuthStateChanged(async user=>{currentUser=user;if(!user){showAuth();return}showApp();const snap=await db.ref('users/'+user.uid).once('value');if(!snap.exists())await db.ref('users/'+user.uid).set({name:user.displayName||user.email.split('@')[0],email:user.email,createdAt:Date.now()});const profile=(await db.ref('users/'+user.uid).once('value')).val()||{};$('myName').textContent=profile.name||user.email;setAvatar($('myAvatar'),profile);loadUsers()})}catch(e){$('authError').textContent=e.message;showAuth()}}
+boot();
+</script>
+</body></html>
